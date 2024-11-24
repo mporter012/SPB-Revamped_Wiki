@@ -11,7 +11,11 @@ echo ===========================================
 
 :: Check Google Chrome
 echo Checking for Google Chrome... >> %LOGFILE%
+:: Look in both user and system registry locations
 reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" /s /f "Google Chrome" >nul 2>&1
+if %ERRORLEVEL% neq 0 (
+    reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" /s /f "Google Chrome" >nul 2>&1
+)
 if %ERRORLEVEL% equ 0 (
     echo Google Chrome is installed. >> %LOGFILE%
     echo Google Chrome: Installed
