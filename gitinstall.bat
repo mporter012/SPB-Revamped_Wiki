@@ -21,6 +21,7 @@ if exist "%DOWNLOAD_PATH%" (
 ) else (
     echo Failed to download Git installer. See log for details. >> %LOGFILE%
     echo Failed to download Git installer. See log for details.
+    pause
     exit /b 1
 )
 
@@ -33,6 +34,7 @@ if %ERRORLEVEL% equ 0 (
 ) else (
     echo Failed to install Git. See log for details. >> %LOGFILE%
     echo Failed to install Git. See log for details.
+    pause
     exit /b 1
 )
 
